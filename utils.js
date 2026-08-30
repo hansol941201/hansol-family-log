@@ -15,7 +15,7 @@ window.Utils={
 /* 기록 항목 이름을 한곳에서 관리합니다. 화면·통계·PDF가 모두 이 목록을 사용합니다. */
 window.Labels={
   activities:{golf:'골프',motorcycle:'오토바이'},
-  childcare:{dropoff:'등원',pickup:'하원',bath:'씻기',bedtime:'아기 재우기',handoff:'아이 맡김'},
+  childcare:{dropoff:'등원',pickup:'하원',breakfast:'아침밥',dinner:'저녁밥',bath:'씻기',bedtime:'아기 재우기',handoff:'아이 맡김'},
   chores:{dishesAm:'설거지 · 오전',dishesPm:'설거지 · 오후',vacuum:'청소기',laundry:'빨래',recycling:'분리수거',bathroom:'화장실 청소'},
   choreGroups:[{label:'매일',keys:['dishesAm','dishesPm','vacuum','laundry']},{label:'필요할 때',keys:['recycling','bathroom']}],
   people:['나','남편','같이'],
