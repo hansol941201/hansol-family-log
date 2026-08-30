@@ -14,7 +14,17 @@ python -m http.server 8080
 
 ## GitHub Pages 배포
 
-이 폴더의 파일 전체를 저장소 루트에 올린 뒤 GitHub 저장소의 **Settings → Pages → Deploy from a branch**에서 `main` / `(root)`를 선택합니다. 별도 빌드 과정은 없습니다.
+배포는 이미 설정되어 있습니다. **Settings → Pages**가 `Deploy from a branch` / `main` / `(root)`로 지정되어 있어서, `main` 브랜치에 푸시하면 GitHub가 자동으로 사이트를 다시 빌드합니다. 별도 빌드 과정이나 워크플로 파일은 필요 없습니다.
+
+```bash
+git add -A
+git commit -m "변경 내용"
+git push origin main
+```
+
+공개 주소: <https://hansol941201.github.io/hansol-family-log/>
+
+푸시 후 반영까지 보통 1–2분 걸립니다. 배포 진행 상황은 저장소의 **Actions** 탭에서 `pages build and deployment` 실행으로 확인할 수 있습니다. 화면이 그대로라면 Service Worker 캐시 때문일 수 있으니 강력 새로고침하거나 `service-worker.js`의 캐시 이름을 올려주세요.
 
 ## 사용 전 확인
 
