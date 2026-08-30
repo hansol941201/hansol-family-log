@@ -68,6 +68,17 @@
         <div id="statsItems" class="stats-items"></div><div id="statsDetail" class="stats-detail"></div>
       </section>
 
+      <section id="filesView" class="view" aria-labelledby="filesTitle">
+        <div class="page-heading"><span class="eyebrow">EVIDENCE ARCHIVE</span><h1 id="filesTitle">자료 보관함</h1><p>과거 사진과 문서를 실제 날짜에 맞춰 보관하세요.</p></div>
+        <div class="archive-upload">
+          <div class="archive-fields"><label>자료 날짜<input id="archiveDate" type="date"></label><label>자료 종류<select id="archiveCategory"><option>카톡 캡처</option><option>사진</option><option>음성·녹음</option><option>문서</option><option>기타</option></select></label></div>
+          <label class="archive-note">설명<textarea id="archiveNote" rows="2" placeholder="누가, 언제, 어떤 상황인지 적어두세요"></textarea></label>
+          <label class="primary-btn archive-add">파일 추가<input id="archiveInput" type="file" multiple hidden></label>
+          <p class="hint">선택한 파일은 이 기기의 한솔기록 안에 복사되어 저장됩니다.</p>
+        </div>
+        <div id="archiveList" class="archive-list"></div>
+      </section>
+
       <section id="exportView" class="view" aria-labelledby="exportTitle">
         <div class="page-heading"><h1 id="exportTitle">내보내기</h1><p>원하는 기간의 기록을 한 번에 정리합니다.</p></div>
         <div class="export-box"><div class="range-grid"><label>시작일<input id="exportStart" type="date"></label><label>종료일<input id="exportEnd" type="date"></label></div>
@@ -82,6 +93,7 @@
       <button class="nav-btn active" data-view="todayView" aria-current="page"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 10.7 12 3.8l8.5 6.9v8.6a1.7 1.7 0 0 1-1.7 1.7H5.2a1.7 1.7 0 0 1-1.7-1.7Z"/><path d="M9 21v-6.5h6V21"/></svg></span><span class="nav-label">오늘</span></button>
       <button class="nav-btn" data-view="recordsView"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="15" rx="2.5"/><path d="M7.5 3v5M16.5 3v5M3.5 10h17M8 14h3M8 17h7"/></svg></span><span class="nav-label">기록</span></button>
       <button class="nav-btn" data-view="statsView"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V10M12 20V4M19 20v-7"/><path d="M3 20.5h18"/></svg></span><span class="nav-label">통계</span></button>
+      <button class="nav-btn" data-view="filesView"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4" width="17" height="16" rx="2.5"/><path d="m6.5 16 3.2-3.5 2.6 2.5 2.2-2 3 3M15.5 8.5h.01"/></svg></span><span class="nav-label">자료</span></button>
       <button class="nav-btn" data-view="exportView"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8.5h16v11A1.5 1.5 0 0 1 18.5 21h-13A1.5 1.5 0 0 1 4 19.5Z"/><path d="M3 4h18v4.5H3zM9 12h6"/></svg></span><span class="nav-label">보관</span></button>
     </nav>
   </div>
@@ -103,6 +115,9 @@
       <p class="hint">모든 기록은 이 기기의 브라우저 안에 저장됩니다. 기기 변경 전에는 내보내기에서 백업 파일을 저장하세요.</p>
       <button id="installBtn" class="secondary-btn" hidden>홈 화면에 설치</button>
     </div>
+  </section>
+  <section id="previewModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="previewTitle" hidden>
+    <div class="modal-card preview-card"><div class="sheet-head"><h2 id="previewTitle">사진 보기</h2><button id="previewClose" class="icon-btn" aria-label="닫기">×</button></div><img id="previewImage" alt="첨부 사진 크게 보기"><p id="previewMeta" class="hint"></p><button id="previewDownload" class="primary-btn">원본 사진 저장</button></div>
   </section>
   <div id="toast" role="status" aria-live="polite"></div>
   <script src="utils.js"></script><script src="db.js"></script><script src="audio.js"></script><script src="backup.js"></script><script src="pdf.js"></script><script src="app.js"></script>
