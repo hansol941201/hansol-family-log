@@ -8,9 +8,10 @@ window.DB=(()=>{const NAME='hansol-records',VERSION=1;let db;
     const stored=day.activities&&typeof day.activities==='object'?day.activities:{};
     const activities={};
     for(const key of new Set([...Object.keys(Labels.activities),...Object.keys(stored)]))activities[key]=(Array.isArray(stored[key])?stored[key]:[]).map(Outing.normalize);
-    return{...day,activities,childcare:day.childcare&&typeof day.childcare==='object'?day.childcare:{},chores:day.chores&&typeof day.chores==='object'?day.chores:{},sleepTime:day.sleepTime||'',memo:day.memo||''};
+    const soloCare=(Array.isArray(day.soloCare)?day.soloCare:[]).map(SoloCare.normalize);
+    return{...day,activities,soloCare,childcare:day.childcare&&typeof day.childcare==='object'?day.childcare:{},chores:day.chores&&typeof day.chores==='object'?day.chores:{},sleepTime:day.sleepTime||'',memo:day.memo||''};
   }
-  function emptyDay(date){return normalizeDay({date,activities:{},childcare:{},sleepTime:'',chores:{},memo:''})}
+  function emptyDay(date){return normalizeDay({date,activities:{},soloCare:[],childcare:{},sleepTime:'',chores:{},memo:''})}
   async function getDay(date){const found=await request((await store('days')).get(date));return found?normalizeDay(found):emptyDay(date)}
   async function saveDay(day){const normalized=normalizeDay(day);await request((await store('days','readwrite')).put(normalized));return normalized}
   async function getDays(start,end){const all=await request((await store('days')).getAll());return all.filter(x=>x.date>=start&&x.date<=end).map(normalizeDay).sort((a,b)=>a.date.localeCompare(b.date))}

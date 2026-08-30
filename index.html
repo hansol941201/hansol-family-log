@@ -33,6 +33,10 @@
 
         <section class="record-section"><h2>육아</h2><div id="childcareRows" class="choice-list"></div>
           <div class="time-row"><label for="sleepTime">아이 잠든 시간</label><div><input id="sleepTime" type="time"><button id="sleepNow" class="mini-btn">지금</button></div></div>
+          <div class="solo-care-block"><h3>혼자 육아</h3><div class="activity-grid">
+            <button class="activity-btn solo-care-btn" data-person="me"><span>나 혼자 육아</span><small class="status-text">기록하기</small></button>
+            <button class="activity-btn solo-care-btn" data-person="husband"><span>남편 혼자 육아</span><small class="status-text">기록하기</small></button>
+          </div></div>
         </section>
 
         <section class="record-section"><h2>집안일</h2><div id="choreRows" class="choice-list"></div></section>
@@ -85,6 +89,11 @@
   <section id="activitySheet" class="bottom-sheet" aria-modal="true" role="dialog" hidden>
     <div class="sheet-handle"></div><div class="sheet-head"><h2 id="sheetTitle"></h2><button class="icon-btn" data-close-sheet aria-label="닫기">×</button></div>
     <p class="sheet-hint">시간을 몰라도 저장할 수 있어요. 나간 시간과 들어온 시간은 따로 고르면 됩니다.</p><div id="activityEntries"></div><button id="addEntryBtn" class="text-btn">+ 외출 기록 추가</button><button id="saveActivityBtn" class="primary-btn">저장</button>
+  </section>
+
+  <section id="soloCareSheet" class="bottom-sheet" aria-modal="true" role="dialog" hidden>
+    <div class="sheet-handle"></div><div class="sheet-head"><h2 id="soloCareTitle"></h2><button class="icon-btn" data-close-solo aria-label="닫기">×</button></div>
+    <p class="sheet-hint">시간을 전부 몰라도 혼자 육아한 사실을 저장할 수 있어요.</p><div id="soloCareEntries"></div><button id="addSoloCareBtn" class="text-btn">+ 혼자 육아 기록 추가</button><button id="saveSoloCareBtn" class="primary-btn">저장</button>
   </section>
 
   <section id="settingsModal" class="modal" role="dialog" aria-modal="true" hidden>

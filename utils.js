@@ -56,3 +56,22 @@ window.Outing=(()=>{
   const describeList=(list)=>(Array.isArray(list)?list:[]).map(describe);
   return{START_MODES,END_MODES,normalize,describe,describeList,startText,endText};
 })();
+
+/* 혼자 육아 한 건의 시간 상태. 날짜 객체의 soloCare 배열에 저장합니다. */
+window.SoloCare=(()=>{
+  const PEOPLE={me:'나 혼자 육아',husband:'남편 혼자 육아'};
+  const START_MODES={time:'직접 입력',unknown:'모름'};
+  const END_MODES={time:'직접 입력',unknown:'모름',ongoing:'진행 중'};
+  function normalize(entry){
+    const src=entry&&typeof entry==='object'?entry:{};
+    const person=PEOPLE[src.person]?src.person:'me',start=typeof src.start==='string'?src.start:'',end=typeof src.end==='string'?src.end:'';
+    let startMode=START_MODES[src.startMode]?src.startMode:(start?'time':'unknown'),endMode=END_MODES[src.endMode]?src.endMode:(end?'time':'unknown');
+    if(startMode==='time'&&!start)startMode='unknown';if(endMode==='time'&&!end)endMode='unknown';
+    return{id:src.id||Utils.uid(),person,startMode,start:startMode==='time'?start:'',endMode,end:endMode==='time'?end:''};
+  }
+  function describe(entry){const e=normalize(entry),label=PEOPLE[e.person];if(e.startMode==='time'&&e.endMode==='time')return`${label} · ${e.start}~${e.end}`;if(e.startMode==='time'&&e.endMode==='ongoing')return`${label} · ${e.start}부터 진행 중`;if(e.startMode==='unknown'&&e.endMode==='time')return`${label} · 시작 시간 모름 · ${e.end} 종료`;if(e.startMode==='time'&&e.endMode==='unknown')return`${label} · ${e.start} 시작 · 종료 시간 모름`;if(e.endMode==='ongoing')return`${label} · 시작 시간 모름 · 진행 중`;return`${label} · 시간 모름`}
+  function minutes(entry){const e=normalize(entry);if(e.startMode!=='time'||e.endMode!=='time')return null;const [sh,sm]=e.start.split(':').map(Number),[eh,em]=e.end.split(':').map(Number);let n=eh*60+em-(sh*60+sm);if(n<0)n+=1440;return n}
+  function summarize(days,person){const records=[];for(const d of days)for(const e of d.soloCare||[])if(e.person===person)records.push({date:d.date,entry:e});const known=records.map(x=>minutes(x.entry)).filter(x=>x!==null);return{days:new Set(records.map(x=>x.date)).size,count:records.length,minutes:known.reduce((a,b)=>a+b,0),unknown:records.length-known.length}}
+  function formatMinutes(n){return`${Math.floor(n/60)}시간 ${n%60}분`}
+  return{PEOPLE,START_MODES,END_MODES,normalize,describe,minutes,summarize,formatMinutes};
+})();

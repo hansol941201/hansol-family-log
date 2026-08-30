@@ -7,3 +7,5 @@ body{background:linear-gradient(180deg,#eef3f7 0,#f7f9fa 260px);letter-spacing:-
 .choice-row[hidden]{display:none}
 /* 통계 막대 이름이 길 때(우리 언니·안 맡김) 이름 칸을 조금 넓힙니다. */
 .stats-detail.wide-labels .bar-row{grid-template-columns:64px 1fr 38px}
+
+.solo-care-block{border-top:1px solid #edf1f4;margin-top:16px;padding-top:15px}.solo-care-block h3{font-size:14px;margin:0 0 10px}.solo-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}.solo-stat-card{background:#ffffff12;border:1px solid #ffffff20;border-radius:10px;padding:12px}.solo-stat-card h4{margin:0 0 9px;font-size:16px}.solo-stat-card dl{margin:0}.solo-stat-card dl div{display:flex;justify-content:space-between;gap:8px;border-top:1px solid #ffffff18;padding:7px 0}.solo-stat-card dt{color:#b8cad8;font-size:11px}.solo-stat-card dd{margin:0;font-size:12px;font-weight:750;text-align:right}@media(max-width:400px){.solo-stats{grid-template-columns:1fr}.entry-summary{min-width:0;overflow-wrap:anywhere}.mode-chips button{padding:0 10px}.solo-care-btn{padding-inline:11px}}
