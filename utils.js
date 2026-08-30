@@ -15,14 +15,14 @@ window.Utils={
 /* 기록 항목 이름을 한곳에서 관리합니다. 화면·통계·PDF가 모두 이 목록을 사용합니다. */
 window.Labels={
   activities:{golf:'골프',motorcycle:'오토바이'},
-  childcare:{dropoff:'등원',pickup:'하원',breakfast:'아침밥',dinner:'저녁밥',bath:'씻기',bedtime:'아기 재우기',handoff:'아이 맡김'},
-  chores:{dishesAm:'설거지 · 오전',dishesPm:'설거지 · 오후',vacuum:'청소기',laundry:'빨래',recycling:'분리수거',bathroom:'화장실 청소'},
-  choreGroups:[{label:'매일',keys:['dishesAm','dishesPm','vacuum','laundry']},{label:'필요할 때',keys:['recycling','bathroom']}],
+  childcare:{dropoff:'등원',pickup:'하원',daycarePrep:'등원 준비물·준비사항',breakfast:'아침밥',dinner:'저녁밥',bath:'씻기',bedtime:'아기 재우기',handoff:'아이 맡김'},
+  chores:{dishesAm:'설거지 · 오전',dishesPm:'설거지 · 오후',vacuum:'청소기',wetMop:'물걸레',steamMop:'스팀걸레',toyClean:'아기 장난감 청소·소독',laundry:'빨래',beddingLaundry:'이불 빨래',carpetLaundry:'카페트 빨래',recycling:'분리수거',foodWaste:'음식물 쓰레기',bathroom:'화장실 청소'},
+  choreGroups:[{label:'매일',keys:['dishesAm','dishesPm','vacuum','wetMop','steamMop','laundry']},{label:'세탁·소독',keys:['toyClean','beddingLaundry','carpetLaundry']},{label:'필요할 때',keys:['recycling','foodWaste','bathroom']}],
   people:['나','남편','같이'],
   /* 사람(나·남편·같이)이 아닌 다른 버튼을 쓰는 육아 항목만 여기에 적습니다. */
   childcareOptions:{handoff:['우리 언니','시댁','기타','안 맡김']},
   /* 버튼 글자가 길어 이름 아래에 한 줄로 펼쳐 그리는 항목 */
-  wideChoiceRows:['handoff'],
+  wideChoiceRows:['daycarePrep','handoff','toyClean'],
   /* 한국 시간 기준 토·일에는 오늘 화면에서 감추는 육아 항목.
      이미 저장된 주말 기록은 지우지 않고 기록·통계·PDF에 그대로 남습니다. */
   weekdayOnlyChildcare:['dropoff','pickup'],

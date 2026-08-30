@@ -7,8 +7,10 @@ window.PDFExport={async run(start,end){
     for(const [k,label] of Object.entries(Labels.activities)){const arr=d.activities?.[k]||[];if(arr.length)add(label,Outing.describeList(arr).map(Utils.escape).join('<br>'))}
     if(d.soloCare?.length)add('혼자 육아',d.soloCare.map(SoloCare.describe).map(Utils.escape).join('<br>'));
     for(const [k,label] of Object.entries(Labels.childcare))if(d.childcare?.[k])add(label,Utils.escape(d.childcare[k]));
+    if(d.daycarePrepMemo)add('등원 준비 내용',Utils.escape(d.daycarePrepMemo).replace(/\n/g,'<br>'));
     if(d.sleepTime)add('아이 잠든 시간',Utils.escape(d.sleepTime));
     for(const [k,label] of Object.entries(Labels.chores))if(d.chores?.[k])add(label,Utils.escape(d.chores[k]));
+    if(d.choreMemo)add('청소·집안일 메모',Utils.escape(d.choreMemo).replace(/\n/g,'<br>'));
     if(d.memo)add('메모',Utils.escape(d.memo).replace(/\n/g,'<br>'));
     let attachments='';for(const f of fileMap[d.date]||[]){if(f.type.startsWith('image/'))attachments+=`<figure><img src="${await Backup.blobToDataURL(f.blob)}"><figcaption>${Utils.escape(f.name)}</figcaption></figure>`;else attachments+=`<div class="file">음성 · ${Utils.escape(f.name)} (${Utils.bytes(f.size)})</div>`}
     sections+=`<section><h2>${Utils.formatDate(d.date)}</h2><table>${rows.join('')||'<tr><td>기록 없음</td></tr>'}</table>${attachments?`<div class="attachments">${attachments}</div>`:''}</section>`;
