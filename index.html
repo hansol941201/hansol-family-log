@@ -84,7 +84,7 @@
         <div class="export-box"><div class="range-grid"><label>시작일<input id="exportStart" type="date"></label><label>종료일<input id="exportEnd" type="date"></label></div>
           <button id="pdfBtn" class="primary-btn">PDF로 정리</button><button id="backupBtn" class="secondary-btn">전체 백업 파일 저장</button>
           <label class="secondary-btn file-label">백업 파일 불러오기<input id="restoreInput" type="file" accept="application/json,.json" hidden></label>
-          <p class="hint">PDF 버튼을 누르면 인쇄 화면이 열립니다. 휴대폰의 ‘PDF로 저장’을 선택하세요.</p>
+          <p class="hint">앱 안에서 내용을 먼저 확인한 뒤 ‘인쇄·PDF 저장’을 선택할 수 있습니다.</p>
         </div>
       </section>
     </main>
@@ -118,6 +118,9 @@
   </section>
   <section id="previewModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="previewTitle" hidden>
     <div class="modal-card preview-card"><div class="sheet-head"><h2 id="previewTitle">사진 보기</h2><button id="previewClose" class="icon-btn" aria-label="닫기">×</button></div><img id="previewImage" alt="첨부 사진 크게 보기"><p id="previewMeta" class="hint"></p><button id="previewDownload" class="primary-btn">원본 사진 저장</button></div>
+  </section>
+  <section id="pdfPreviewModal" class="modal pdf-preview-modal" role="dialog" aria-modal="true" aria-labelledby="pdfPreviewTitle" hidden>
+    <div class="modal-card pdf-preview-card"><div class="sheet-head"><div><span class="eyebrow">PDF PREVIEW</span><h2 id="pdfPreviewTitle">기록 미리보기</h2></div><button id="pdfPreviewClose" class="icon-btn" aria-label="닫기">×</button></div><iframe id="pdfPreviewFrame" title="PDF 기록 미리보기"></iframe><p class="hint">아래 버튼을 누른 뒤 휴대폰 메뉴에서 ‘PDF로 저장’을 선택하세요.</p><button id="pdfPrintBtn" class="primary-btn">인쇄·PDF 저장</button></div>
   </section>
   <div id="toast" role="status" aria-live="polite"></div>
   <script src="utils.js"></script><script src="db.js"></script><script src="audio.js"></script><script src="backup.js"></script><script src="pdf.js"></script><script src="app.js"></script>
