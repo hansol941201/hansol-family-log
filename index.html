@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#fbfaf7">
+  <meta name="theme-color" content="#f7f7fb">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <title>한솔기록</title>
@@ -11,6 +11,7 @@
   <link rel="apple-touch-icon" href="icons/icon-192.png">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="skin.css">
+  <link rel="stylesheet" href="theme.css">
   <style>.group-label{font-size:12px;font-weight:750;color:#617181;padding:4px 0 7px}.group-label.occasional{margin-top:14px;padding-top:13px;border-top:1px solid #dce3e9}</style>
 </head>
 <body>
@@ -21,7 +22,7 @@
     </header>
 
     <main>
-      <section id="todayView" class="view active" aria-labelledby="todayTitle">
+      <section id="todayView" class="view" aria-labelledby="todayTitle">
         <div class="today-hero"><div><span class="eyebrow">DAILY RECORD</span><h1 id="todayTitle">오늘의 기록</h1><p id="todayDate"></p></div><div id="todayProgress" class="progress-ring"><b>0</b><small>기록</small></div></div><div id="editingBanner" class="editing-banner" hidden><span>선택한 날짜를 수정 중입니다.</span><button id="backToToday">오늘로 돌아가기</button></div>
 
         <section class="record-section"><h2>외출</h2>
@@ -54,7 +55,7 @@
         <section class="record-section memo-section"><label for="memo"><h2>메모</h2></label><textarea id="memo" rows="3" placeholder="필요한 내용만 짧게 적어두세요"></textarea><span id="memoState" class="save-state"></span></section>
       </section>
 
-      <section id="recordsView" class="view" aria-labelledby="recordsTitle">
+      <section id="recordsView" class="view active" aria-labelledby="recordsTitle">
         <div class="page-heading"><span class="eyebrow">CALENDAR</span><h1 id="recordsTitle">기록 달력</h1><p>날짜를 누르면 기록을 확인하고 수정할 수 있어요.</p></div>
         <div class="calendar-toolbar"><button id="calendarPrev" aria-label="이전 달">‹</button><input id="calendarMonth" type="month"><button id="calendarNext" aria-label="다음 달">›</button></div>
         <div class="calendar-weekdays"><span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span></div><div id="calendarGrid" class="calendar-grid"></div>
@@ -90,8 +91,8 @@
     </main>
 
     <nav class="bottom-nav" aria-label="주요 메뉴">
-      <button class="nav-btn active" data-view="todayView" aria-current="page"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 10.7 12 3.8l8.5 6.9v8.6a1.7 1.7 0 0 1-1.7 1.7H5.2a1.7 1.7 0 0 1-1.7-1.7Z"/><path d="M9 21v-6.5h6V21"/></svg></span><span class="nav-label">오늘</span></button>
-      <button class="nav-btn" data-view="recordsView"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="15" rx="2.5"/><path d="M7.5 3v5M16.5 3v5M3.5 10h17M8 14h3M8 17h7"/></svg></span><span class="nav-label">기록</span></button>
+      <button class="nav-btn" data-view="todayView"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 10.7 12 3.8l8.5 6.9v8.6a1.7 1.7 0 0 1-1.7 1.7H5.2a1.7 1.7 0 0 1-1.7-1.7Z"/><path d="M9 21v-6.5h6V21"/></svg></span><span class="nav-label">오늘</span></button>
+      <button class="nav-btn active" data-view="recordsView" aria-current="page"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="15" rx="2.5"/><path d="M7.5 3v5M16.5 3v5M3.5 10h17M8 14h3M8 17h7"/></svg></span><span class="nav-label">달력</span></button>
       <button class="nav-btn" data-view="statsView"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V10M12 20V4M19 20v-7"/><path d="M3 20.5h18"/></svg></span><span class="nav-label">통계</span></button>
       <button class="nav-btn" data-view="filesView"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4" width="17" height="16" rx="2.5"/><path d="m6.5 16 3.2-3.5 2.6 2.5 2.2-2 3 3M15.5 8.5h.01"/></svg></span><span class="nav-label">자료</span></button>
       <button class="nav-btn" data-view="exportView"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8.5h16v11A1.5 1.5 0 0 1 18.5 21h-13A1.5 1.5 0 0 1 4 19.5Z"/><path d="M3 4h18v4.5H3zM9 12h6"/></svg></span><span class="nav-label">보관</span></button>
