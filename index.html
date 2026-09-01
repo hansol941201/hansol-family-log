@@ -23,16 +23,16 @@
 
     <main>
       <section id="todayView" class="view" aria-labelledby="todayTitle">
-        <div class="today-hero"><div><span class="eyebrow">DAILY RECORD</span><h1 id="todayTitle">오늘의 기록</h1><p id="todayDate"></p></div><div id="todayProgress" class="progress-ring"><b>0</b><small>기록</small></div></div><div id="editingBanner" class="editing-banner" hidden><span>선택한 날짜를 수정 중입니다.</span><button id="backToToday">오늘로 돌아가기</button></div>
+        <div class="today-hero"><div class="today-symbol" aria-hidden="true">✦</div><div class="today-copy"><span class="eyebrow">FAMILY LOG</span><h1 id="todayTitle">오늘</h1><p id="todayDate"></p></div><div id="todayProgress" class="progress-ring"><b>0</b><small>완료</small></div></div><div id="editingBanner" class="editing-banner" hidden><span>🗓️ 선택한 날짜를 수정 중입니다.</span><button id="backToToday">오늘로 돌아가기</button></div>
 
-        <section class="record-section"><h2>외출</h2>
+        <section class="record-section"><h2>🚗 외출</h2>
           <div class="activity-grid">
             <button class="activity-btn" data-activity="golf"><span><i class="button-icon">⛳</i>골프</span><small class="status-text">기록하기</small></button>
             <button class="activity-btn" data-activity="motorcycle"><span><i class="button-icon">🏍️</i>오토바이</span><small class="status-text">기록하기</small></button>
           </div>
         </section>
 
-        <section class="record-section"><h2>육아</h2><div id="childcareRows" class="choice-list"></div>
+        <section class="record-section"><h2>🧸 육아</h2><div id="childcareRows" class="choice-list"></div>
           <label class="inline-memo" for="daycarePrepMemo"><span>등원 준비 내용</span><textarea id="daycarePrepMemo" rows="2" placeholder="기저귀, 여벌옷, 알림장 등 준비한 내용을 적어두세요"></textarea><small id="daycarePrepMemoState" class="save-state"></small></label>
           <div class="time-row"><label for="sleepTime">🌙 아이 잠든 시간</label><div><input id="sleepTime" class="time-input" type="text" inputmode="numeric" maxlength="5" placeholder="21:30"><button id="sleepNow" class="mini-btn">지금</button></div></div>
           <div class="solo-care-block"><h3>혼자 육아</h3><div class="activity-grid">
@@ -41,9 +41,9 @@
           </div></div>
         </section>
 
-        <section class="record-section"><h2>집안일</h2><div id="choreRows" class="choice-list"></div><label class="inline-memo" for="choreMemo"><span>청소·집안일 메모</span><textarea id="choreMemo" rows="2" placeholder="청소한 곳이나 세부 내용을 적어두세요"></textarea><small id="choreMemoState" class="save-state"></small></label></section>
+        <section class="record-section"><h2>🧹 집안일</h2><div id="choreRows" class="choice-list"></div><label class="inline-memo" for="choreMemo"><span>📝 청소·집안일 메모</span><textarea id="choreMemo" rows="2" placeholder="청소한 곳이나 세부 내용을 적어두세요"></textarea><small id="choreMemoState" class="save-state"></small></label></section>
 
-        <section class="record-section"><h2>첨부</h2>
+        <section class="record-section"><h2>📎 첨부</h2>
           <div class="attach-actions">
             <label class="outline-btn">사진<input id="photoInput" type="file" accept="image/*" multiple hidden></label>
             <label class="outline-btn">음성 파일<input id="audioInput" type="file" accept="audio/*" multiple hidden></label>
@@ -52,26 +52,26 @@
           <div id="attachmentList" class="attachment-list"></div>
         </section>
 
-        <section class="record-section memo-section"><label for="memo"><h2>메모</h2></label><textarea id="memo" rows="3" placeholder="필요한 내용만 짧게 적어두세요"></textarea><span id="memoState" class="save-state"></span></section>
+        <section class="record-section memo-section"><label for="memo"><h2>📝 메모</h2></label><textarea id="memo" rows="3" placeholder="필요한 내용만 짧게 적어두세요"></textarea><span id="memoState" class="save-state"></span></section>
       </section>
 
       <section id="recordsView" class="view active" aria-labelledby="recordsTitle">
-        <div class="page-heading"><span class="eyebrow">CALENDAR</span><h1 id="recordsTitle">기록 달력</h1><p>날짜를 누르면 기록을 확인하고 수정할 수 있어요.</p></div>
+        <div class="page-heading"><span class="eyebrow">CALENDAR</span><h1 id="recordsTitle">🗓️ 기록 달력</h1><p>날짜를 누르면 기록을 확인하고 수정할 수 있어요.</p></div>
         <div class="calendar-toolbar"><button id="calendarPrev" aria-label="이전 달">‹</button><input id="calendarMonth" type="month"><button id="calendarNext" aria-label="다음 달">›</button></div>
         <div class="calendar-weekdays"><span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span></div><div id="calendarGrid" class="calendar-grid"></div>
         <input id="recordDate" type="date" hidden><div id="recordDetail" hidden></div><div id="recentRecords" hidden></div>
       </section>
 
       <section id="statsView" class="view" aria-labelledby="statsTitle">
-        <div class="page-heading"><span class="eyebrow">MONTHLY SUMMARY</span><h1 id="statsTitle">월간 통계</h1><p>항목을 선택하면 담당별 횟수와 기록 날짜를 비교할 수 있어요.</p></div>
+        <div class="page-heading"><span class="eyebrow">MONTHLY SUMMARY</span><h1 id="statsTitle">📊 부부 비교</h1><p>이번 달에 누가 더 많이 했는지 바로 비교해보세요.</p></div>
         <label class="month-picker-label">확인할 달<input id="statsMonth" type="month"></label>
-        <div id="statsCategoryTabs" class="segment-tabs"><button class="active" data-category="childcare">육아</button><button data-category="chores">집안일</button><button data-category="outing">외출</button></div>
+        <div id="statsCategoryTabs" class="segment-tabs"><button class="active" data-category="childcare">🧸 육아</button><button data-category="chores">🧹 집안일</button><button data-category="outing">🚗 외출</button></div>
         <div id="statsOverview" class="stats-overview"></div>
         <div id="statsItems" class="stats-items"></div><div id="statsDetail" class="stats-detail"></div>
       </section>
 
       <section id="filesView" class="view" aria-labelledby="filesTitle">
-        <div class="page-heading"><span class="eyebrow">EVIDENCE ARCHIVE</span><h1 id="filesTitle">자료 보관함</h1><p>과거 사진과 문서를 실제 날짜에 맞춰 보관하세요.</p></div>
+        <div class="page-heading"><span class="eyebrow">EVIDENCE ARCHIVE</span><h1 id="filesTitle">🗂️ 자료 보관함</h1><p>과거 사진과 문서를 실제 날짜에 맞춰 보관하세요.</p></div>
         <div class="archive-upload">
           <div class="archive-fields"><label>자료 날짜<input id="archiveDate" type="date"></label><label>자료 종류<select id="archiveCategory"><option>카톡 캡처</option><option>사진</option><option>음성·녹음</option><option>문서</option><option>기타</option></select></label></div>
           <label class="archive-note">설명<textarea id="archiveNote" rows="2" placeholder="누가, 언제, 어떤 상황인지 적어두세요"></textarea></label>
@@ -82,7 +82,7 @@
       </section>
 
       <section id="exportView" class="view" aria-labelledby="exportTitle">
-        <div class="page-heading"><h1 id="exportTitle">내보내기</h1><p>원하는 기간의 기록을 한 번에 정리합니다.</p></div>
+        <div class="page-heading"><h1 id="exportTitle">📦 내보내기</h1><p>원하는 기간의 기록을 한 번에 정리합니다.</p></div>
         <div class="export-box"><div class="range-grid"><label>시작일<input id="exportStart" type="date"></label><label>종료일<input id="exportEnd" type="date"></label></div>
           <button id="pdfBtn" class="primary-btn">PDF로 정리</button><button id="backupBtn" class="secondary-btn">전체 백업 파일 저장</button>
           <label class="secondary-btn file-label">백업 파일 불러오기<input id="restoreInput" type="file" accept="application/json,.json" hidden></label>
@@ -92,11 +92,11 @@
     </main>
 
     <nav class="bottom-nav" aria-label="주요 메뉴">
-      <button class="nav-btn" data-view="todayView"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 10.7 12 3.8l8.5 6.9v8.6a1.7 1.7 0 0 1-1.7 1.7H5.2a1.7 1.7 0 0 1-1.7-1.7Z"/><path d="M9 21v-6.5h6V21"/></svg></span><span class="nav-label">오늘</span></button>
-      <button class="nav-btn active" data-view="recordsView" aria-current="page"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="15" rx="2.5"/><path d="M7.5 3v5M16.5 3v5M3.5 10h17M8 14h3M8 17h7"/></svg></span><span class="nav-label">달력</span></button>
-      <button class="nav-btn" data-view="statsView"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V10M12 20V4M19 20v-7"/><path d="M3 20.5h18"/></svg></span><span class="nav-label">통계</span></button>
-      <button class="nav-btn" data-view="filesView"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4" width="17" height="16" rx="2.5"/><path d="m6.5 16 3.2-3.5 2.6 2.5 2.2-2 3 3M15.5 8.5h.01"/></svg></span><span class="nav-label">자료</span></button>
-      <button class="nav-btn" data-view="exportView"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8.5h16v11A1.5 1.5 0 0 1 18.5 21h-13A1.5 1.5 0 0 1 4 19.5Z"/><path d="M3 4h18v4.5H3zM9 12h6"/></svg></span><span class="nav-label">보관</span></button>
+      <button class="nav-btn" data-view="todayView"><span class="nav-icon">✍️</span><span class="nav-label">오늘</span></button>
+      <button class="nav-btn active" data-view="recordsView" aria-current="page"><span class="nav-icon">🗓️</span><span class="nav-label">달력</span></button>
+      <button class="nav-btn" data-view="statsView"><span class="nav-icon">📊</span><span class="nav-label">비교</span></button>
+      <button class="nav-btn" data-view="filesView"><span class="nav-icon">🗂️</span><span class="nav-label">자료</span></button>
+      <button class="nav-btn" data-view="exportView"><span class="nav-icon">📦</span><span class="nav-label">보관</span></button>
     </nav>
   </div>
 
