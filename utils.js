@@ -7,6 +7,7 @@ window.Utils={
   bytes(n){return n<1048576?Math.round(n/1024)+' KB':(n/1048576).toFixed(1)+' MB'},
   toast(msg){const el=document.querySelector('#toast');el.textContent=msg;el.classList.add('show');clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove('show'),1800)},
   debounce(fn,ms=400){let t;return(...a)=>{clearTimeout(t);t=setTimeout(()=>fn(...a),ms)}},
+  normalizeTime(value=''){const digits=String(value).replace(/\D/g,'').slice(0,4);if(digits.length<3)return String(value).trim();const h=Number(digits.slice(0,-2)),m=Number(digits.slice(-2));return h<24&&m<60?`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`:''},
   /* 한국 시간 기준 토·일 여부. 날짜 문자열(YYYY-MM-DD) 자체의 요일을 보므로
      기기 시간대와 상관없이 같은 결과가 나옵니다. */
   isWeekendKST(date){const d=new Date(date+'T12:00:00Z').getUTCDay();return d===0||d===6}
@@ -18,6 +19,8 @@ window.Labels={
   childcare:{dropoff:'등원',pickup:'하원',daycarePrep:'등원 준비물·준비사항',breakfast:'아침밥',dinner:'저녁밥',bath:'씻기',bedtime:'아기 재우기',handoff:'아이 맡김'},
   chores:{dishesAm:'설거지 · 오전',dishesPm:'설거지 · 오후',vacuum:'청소기',wetMop:'물걸레',steamMop:'스팀걸레',toyClean:'아기 장난감 청소·소독',laundry:'빨래',beddingLaundry:'이불 빨래',carpetLaundry:'카페트 빨래',recycling:'분리수거',foodWaste:'음식물 쓰레기',bathroom:'화장실 청소'},
   choreGroups:[{label:'매일',keys:['dishesAm','dishesPm','vacuum','wetMop','steamMop','laundry']},{label:'세탁·소독',keys:['toyClean','beddingLaundry','carpetLaundry']},{label:'필요할 때',keys:['recycling','foodWaste','bathroom']}],
+  icons:{dropoff:'🎒',pickup:'🏠',daycarePrep:'🧳',breakfast:'🥣',dinner:'🍚',bath:'🛁',bedtime:'🌙',handoff:'🤝',dishesAm:'🍽️',dishesPm:'🍽️',vacuum:'🧹',wetMop:'🫧',steamMop:'♨️',toyClean:'🧸',laundry:'👕',beddingLaundry:'🛏️',carpetLaundry:'🧺',recycling:'♻️',foodWaste:'🗑️',bathroom:'🚿'},
+  iconFor(key){return this.icons[key]||'•'},
   people:['나','남편','같이'],
   /* 사람(나·남편·같이)이 아닌 다른 버튼을 쓰는 육아 항목만 여기에 적습니다. */
   childcareOptions:{handoff:['우리 언니','시댁','기타','안 맡김']},
