@@ -6,10 +6,10 @@ window.PDFExport={async run(start,end){
     const rows=[],add=(label,value)=>rows.push(`<tr><th>${label}</th><td>${value}</td></tr>`);
     for(const [k,label] of Object.entries(Labels.activities)){const arr=d.activities?.[k]||[];if(arr.length)add(label,Outing.describeList(arr).map(Utils.escape).join('<br>'))}
     if(d.soloCare?.length)add('혼자 육아',d.soloCare.map(SoloCare.describe).map(Utils.escape).join('<br>'));
-    for(const [k,label] of Object.entries(Labels.childcare))if(d.childcare?.[k])add(label,Utils.escape(d.childcare[k]));
+    for(const [k,label] of Object.entries(Labels.childcare)){const value=d.childcare?.[k],time=d.itemTimes?.[`childcare:${k}`];if(value||time)add(label,Utils.escape([value,time&&`시간 ${time}`].filter(Boolean).join(' · ')))}
     if(d.daycarePrepMemo)add('등원 준비 내용',Utils.escape(d.daycarePrepMemo).replace(/\n/g,'<br>'));
     if(d.sleepTime)add('아이 잠든 시간',Utils.escape(d.sleepTime));
-    for(const [k,label] of Object.entries(Labels.chores))if(d.chores?.[k])add(label,Utils.escape(d.chores[k]));
+    for(const [k,label] of Object.entries(Labels.chores)){const value=d.chores?.[k],time=d.itemTimes?.[`chores:${k}`];if(value||time)add(label,Utils.escape([value,time&&`시간 ${time}`].filter(Boolean).join(' · ')))}
     if(d.choreMemo)add('청소·집안일 메모',Utils.escape(d.choreMemo).replace(/\n/g,'<br>'));
     if(d.memo)add('메모',Utils.escape(d.memo).replace(/\n/g,'<br>'));
     let attachments='';for(const f of fileMap[d.date]||[]){if(f.type.startsWith('image/'))attachments+=`<figure><img src="${await Backup.blobToDataURL(f.blob)}"><figcaption>${Utils.escape(f.name)}${f.note?` · ${Utils.escape(f.note)}`:''}</figcaption></figure>`;else attachments+=`<div class="file">${Utils.escape(f.category||'첨부')} · ${Utils.escape(f.name)} (${Utils.bytes(f.size)})${f.note?` · ${Utils.escape(f.note)}`:''}</div>`}
