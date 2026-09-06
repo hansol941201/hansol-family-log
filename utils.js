@@ -35,29 +35,19 @@ window.Labels={
   statOptionsFor(group,key){return group==='childcare'&&this.childcareOptions[key]?this.childcareOptions[key]:this.people}
 };
 
-/* 외출(골프·오토바이) 한 건의 시간 상태를 다룹니다.
-   나간 시간과 들어온 시간은 서로 독립이고, 둘 다 몰라도 외출한 사실은 남습니다.
-   startMode: time(시간 입력) | unknown(모름)
-   endMode:   time(시간 입력) | unknown(모름) | out(아직 외출 중)            */
+/* 골프·오토바이 외출은 오전/오후만 기록합니다.
+   예전 시각 기록은 나간 시간을 기준으로 오전/오후로 변환해 계속 읽습니다. */
 window.Outing=(()=>{
-  const START_MODES={time:'직접 입력',unknown:'모름'};
-  const END_MODES={time:'직접 입력',unknown:'모름',out:'아직 외출 중'};
-  /* 예전 버전이 저장한 {start,end}만 있는 기록도 그대로 읽히도록 변환합니다. */
+  const PERIODS={am:'오전',pm:'오후'};
   function normalize(entry){
     const src=entry&&typeof entry==='object'?entry:{};
-    const start=typeof src.start==='string'?src.start:'';
-    const end=typeof src.end==='string'?src.end:'';
-    let startMode=START_MODES[src.startMode]?src.startMode:(start?'time':'unknown');
-    let endMode=END_MODES[src.endMode]?src.endMode:(end?'time':'unknown');
-    if(startMode==='time'&&!start)startMode='unknown';
-    if(endMode==='time'&&!end)endMode='unknown';
-    return{id:src.id||Utils.uid(),startMode,start:startMode==='time'?start:'',endMode,end:endMode==='time'?end:''};
+    let period=PERIODS[src.period]?src.period:'';
+    if(!period&&typeof src.start==='string'&&src.start){const hour=Number(src.start.split(':')[0]);if(Number.isFinite(hour))period=hour<12?'am':'pm'}
+    return{id:src.id||Utils.uid(),period:period||'am'};
   }
-  const startText=e=>e.startMode==='time'&&e.start?`${e.start} 출발`:'나간 시간 모름';
-  const endText=e=>e.endMode==='out'?'아직 외출 중':e.endMode==='time'&&e.end?`${e.end} 귀가`:'들어온 시간 모름';
-  const describe=entry=>{const e=normalize(entry);return `${startText(e)} · ${endText(e)}`};
+  const describe=entry=>`${PERIODS[normalize(entry).period]}에 나감`;
   const describeList=(list)=>(Array.isArray(list)?list:[]).map(describe);
-  return{START_MODES,END_MODES,normalize,describe,describeList,startText,endText};
+  return{PERIODS,normalize,describe,describeList};
 })();
 
 /* 혼자 육아 한 건의 시간 상태. 날짜 객체의 soloCare 배열에 저장합니다. */
