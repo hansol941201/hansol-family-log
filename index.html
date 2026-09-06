@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="style.css?v=23">
   <link rel="stylesheet" href="skin.css?v=23">
   <link rel="stylesheet" href="theme.css?v=23">
-  <link rel="stylesheet" href="calm.css?v=25">
+  <link rel="stylesheet" href="calm.css?v=26">
   <style>.group-label{font-size:12px;font-weight:750;color:#617181;padding:4px 0 7px}.group-label.occasional{margin-top:14px;padding-top:13px;border-top:1px solid #dce3e9}</style>
 </head>
 <body>
@@ -27,7 +27,7 @@
       <section id="todayView" class="view" aria-labelledby="todayTitle">
         <div class="today-hero"><div class="today-symbol" aria-hidden="true">✓</div><div class="today-copy"><span class="eyebrow">DAILY FACT LOG</span><h1 id="todayTitle">오늘</h1><p id="todayDate"></p></div><div id="todayProgress" class="progress-ring"><b>0</b><small>기록</small></div></div><div id="editingBanner" class="editing-banner" hidden><span>선택한 날짜의 기록을 수정 중입니다.</span><button id="backToToday">오늘로 돌아가기</button></div>
         <div class="record-principle"><b>사실 중심 기록</b><span>선택한 담당자와 입력한 내용이 날짜별로 기기에 저장됩니다.</span></div>
-        <nav class="today-shortcuts" aria-label="오늘 기록 바로가기"><a href="#careSection"><i>🧸</i><span>육아</span></a><a href="#soloCareBlock"><i>👤</i><span>혼자 육아</span></a><a href="#choreSection"><i>🧹</i><span>집안일</span></a><a href="#attachSection"><i>📎</i><span>첨부</span></a></nav>
+        <nav class="today-shortcuts" aria-label="오늘 기록 바로가기"><a href="#careSection"><i>🧸</i><span>육아</span></a><a href="#choreSection"><i>🧹</i><span>집안일</span></a><a href="#attachSection"><i>📎</i><span>첨부</span></a></nav>
 
         <section id="outingSection" class="record-section"><h2>🚗 외출</h2>
           <div class="activity-grid">
@@ -36,14 +36,7 @@
           </div>
         </section>
 
-        <section id="careSection" class="record-section"><h2>🧸 육아</h2><div id="childcareRows" class="choice-list"></div>
-          <label class="inline-memo" for="daycarePrepMemo"><span>등원 준비 내용</span><textarea id="daycarePrepMemo" rows="2" placeholder="기저귀, 여벌옷, 알림장 등 준비한 내용을 적어두세요"></textarea><small id="daycarePrepMemoState" class="save-state"></small></label>
-          <div class="time-row"><label for="sleepTime">🌙 아이 잠든 시간</label><div><input id="sleepTime" class="time-input" type="text" inputmode="numeric" maxlength="5" placeholder="21:30"><button id="sleepNow" class="mini-btn">지금</button></div></div>
-          <div id="soloCareBlock" class="solo-care-block"><h3>혼자 육아</h3><div class="activity-grid">
-            <button class="activity-btn solo-care-btn" data-person="me"><span><i class="button-icon">👩</i>나 혼자 육아</span><small class="status-text">기록하기</small></button>
-            <button class="activity-btn solo-care-btn" data-person="husband"><span><i class="button-icon">👨</i>남편 혼자 육아</span><small class="status-text">기록하기</small></button>
-          </div></div>
-        </section>
+        <section id="careSection" class="record-section"><h2>🧸 육아</h2><div id="childcareRows" class="choice-list"></div></section>
 
         <section id="choreSection" class="record-section"><h2>🧹 집안일</h2><div id="choreRows" class="choice-list"></div><label class="inline-memo" for="choreMemo"><span>📝 청소·집안일 메모</span><textarea id="choreMemo" rows="2" placeholder="청소한 곳이나 세부 내용을 적어두세요"></textarea><small id="choreMemoState" class="save-state"></small></label></section>
 
@@ -132,7 +125,8 @@
   <section id="calendarDayModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="calendarDayTitle" hidden>
     <div class="modal-card day-modal-card"><div class="sheet-head"><h2 id="calendarDayTitle">날짜 기록</h2><button id="calendarDayClose" class="icon-btn" aria-label="닫기">×</button></div><div id="calendarDayContent"></div><button id="calendarEditBtn" class="primary-btn">✎ 이 날짜 수정하기</button></div>
   </section>
+  <div hidden aria-hidden="true"><input id="sleepTime"><button id="sleepNow"></button></div>
   <div id="toast" role="status" aria-live="polite"></div>
-  <script src="utils.js?v=23"></script><script src="db.js?v=23"></script><script src="audio.js?v=23"></script><script src="backup.js?v=23"></script><script src="pdf.js?v=25"></script><script src="app.js?v=25"></script>
+  <script src="utils.js?v=23"></script><script src="db.js?v=23"></script><script src="audio.js?v=23"></script><script src="backup.js?v=23"></script><script src="pdf.js?v=25"></script><script src="app.js?v=26"></script>
 </body>
 </html>
