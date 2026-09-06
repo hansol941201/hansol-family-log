@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="style.css?v=23">
   <link rel="stylesheet" href="skin.css?v=23">
   <link rel="stylesheet" href="theme.css?v=23">
-  <link rel="stylesheet" href="calm.css?v=26">
+  <link rel="stylesheet" href="calm.css?v=27">
   <style>.group-label{font-size:12px;font-weight:750;color:#617181;padding:4px 0 7px}.group-label.occasional{margin-top:14px;padding-top:13px;border-top:1px solid #dce3e9}</style>
 </head>
 <body>
@@ -123,10 +123,10 @@
     <div class="modal-card pdf-preview-card"><div class="sheet-head"><div><span class="eyebrow">PDF PREVIEW</span><h2 id="pdfPreviewTitle">기록 미리보기</h2></div><button id="pdfPreviewClose" class="icon-btn" aria-label="닫기">×</button></div><iframe id="pdfPreviewFrame" title="PDF 기록 미리보기"></iframe><p class="hint">아래 버튼을 누르면 저장 전용 화면과 휴대폰 인쇄 메뉴가 열립니다. 인쇄 메뉴에서 ‘PDF로 저장’을 선택하세요.</p><button id="pdfPrintBtn" class="primary-btn">PDF 저장 화면 열기</button></div>
   </section>
   <section id="calendarDayModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="calendarDayTitle" hidden>
-    <div class="modal-card day-modal-card"><div class="sheet-head"><h2 id="calendarDayTitle">날짜 기록</h2><button id="calendarDayClose" class="icon-btn" aria-label="닫기">×</button></div><div id="calendarDayContent"></div><button id="calendarEditBtn" class="primary-btn">✎ 이 날짜 수정하기</button></div>
+    <div class="modal-card day-modal-card"><div class="day-modal-handle" aria-hidden="true"></div><div class="sheet-head"><div class="day-modal-heading"><span>날짜별 기록</span><h2 id="calendarDayTitle">날짜 기록</h2><p id="calendarDayCount"></p></div><button id="calendarDayClose" class="icon-btn" aria-label="닫기">×</button></div><div id="calendarDayContent"></div><button id="calendarEditBtn" class="primary-btn"><span>✎</span> 이 날짜 기록 수정하기</button></div>
   </section>
   <div hidden aria-hidden="true"><input id="sleepTime"><button id="sleepNow"></button></div>
   <div id="toast" role="status" aria-live="polite"></div>
-  <script src="utils.js?v=23"></script><script src="db.js?v=23"></script><script src="audio.js?v=23"></script><script src="backup.js?v=23"></script><script src="pdf.js?v=25"></script><script src="app.js?v=26"></script>
+  <script src="utils.js?v=23"></script><script src="db.js?v=23"></script><script src="audio.js?v=23"></script><script src="backup.js?v=23"></script><script src="pdf.js?v=25"></script><script src="app.js?v=27"></script>
 </body>
 </html>
