@@ -16,9 +16,9 @@ window.Utils={
 /* 기록 항목 이름을 한곳에서 관리합니다. 화면·통계·PDF가 모두 이 목록을 사용합니다. */
 window.Labels={
   activities:{golf:'골프',motorcycle:'오토바이'},
-  childcare:{dropoff:'등원',pickup:'하원',daycarePrep:'등원 준비물·준비사항',breakfast:'아침밥',dinner:'저녁밥',bath:'씻기',bedtime:'아기 재우기',handoff:'아이 맡김'},
+  childcare:{handoff:'아이 맡김',dropoff:'등원',pickup:'하원',daycarePrep:'등원 준비물·준비사항',breakfast:'아침밥',dinner:'저녁밥',bath:'씻기',bedtime:'아기 재우기'},
   chores:{dishesAm:'설거지 · 오전',dishesPm:'설거지 · 오후',vacuum:'청소기',wetMop:'물걸레',steamMop:'스팀걸레',toyClean:'아기 장난감 청소·소독',laundry:'빨래',beddingLaundry:'이불 빨래',carpetLaundry:'카페트 빨래',recycling:'분리수거',foodWaste:'음식물 쓰레기',bathroom:'화장실 청소'},
-  choreGroups:[{label:'매일',keys:['dishesAm','dishesPm','vacuum','wetMop','steamMop','laundry']},{label:'세탁·소독',keys:['toyClean','beddingLaundry','carpetLaundry']},{label:'필요할 때',keys:['recycling','foodWaste','bathroom']}],
+  choreGroups:[{label:'자주 하는 집안일',keys:['dishesAm','dishesPm','vacuum','laundry']},{label:'가끔 하는 청소',keys:['wetMop','steamMop','toyClean','beddingLaundry','carpetLaundry']},{label:'필요할 때',keys:['recycling','foodWaste','bathroom']}],
   icons:{dropoff:'🎒',pickup:'🏠',daycarePrep:'🧳',breakfast:'🥣',dinner:'🍚',bath:'🛁',bedtime:'🌙',handoff:'🤝',dishesAm:'🍽️',dishesPm:'🍽️',vacuum:'🧹',wetMop:'🫧',steamMop:'♨️',toyClean:'🧸',laundry:'👕',beddingLaundry:'🛏️',carpetLaundry:'🧺',recycling:'♻️',foodWaste:'🗑️',bathroom:'🚿'},
   iconFor(key){return this.icons[key]||'•'},
   people:['나','남편','같이'],
@@ -34,6 +34,8 @@ window.Labels={
   /* 월간 통계에서 막대로 나눠 보여줄 값 목록(집안일의 '안 함'은 기존대로 막대에 넣지 않습니다) */
   statOptionsFor(group,key){return group==='childcare'&&this.childcareOptions[key]?this.childcareOptions[key]:this.people}
 };
+
+window.BedtimeDetail={durations:{under5:'5분 미만',min5to10:'5~10분',min10to20:'10~20분',over20:'20분 이상',untilSleep:'잠들 때까지'},outcomes:{asleep:'잠듦',leftCrying:'울어도 나옴',switched:'교대함',other:'기타'},describe(value={}){return[this.durations[value.duration],this.outcomes[value.outcome]].filter(Boolean).join(' · ')}};
 
 /* 골프·오토바이 외출은 오전/오후만 기록합니다.
    예전 시각 기록은 나간 시간을 기준으로 오전/오후로 변환해 계속 읽습니다. */
