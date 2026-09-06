@@ -37,6 +37,8 @@ window.Labels={
 
 window.BedtimeDetail={durations:{under5:'5분 미만',min5to10:'5~10분',min10to20:'10~20분',over20:'20분 이상',untilSleep:'잠들 때까지'},outcomes:{asleep:'잠듦',leftCrying:'울어도 나옴',switched:'교대함',other:'기타'},describe(value={}){return[this.durations[value.duration],this.outcomes[value.outcome]].filter(Boolean).join(' · ')}};
 
+window.EvidenceSummary={summarize(days){const result={recordDays:new Set(),childcare:{나:0,남편:0,같이:0},chores:{나:0,남편:0,같이:0},outings:{golf:0,motorcycle:0}};for(const d of days){let recorded=false;for(const cat of ['childcare','chores'])for(const value of Object.values(d[cat]||{}))if(result[cat][value]!==undefined){result[cat][value]++;recorded=true}for(const key of ['golf','motorcycle']){const n=d.activities?.[key]?.length||0;result.outings[key]+=n;if(n)recorded=true}if(d.soloCare?.length||d.memo||d.daycarePrepMemo||d.choreMemo||d.sleepTime||BedtimeDetail.describe(d.bedtimeDetail))recorded=true;if(recorded)result.recordDays.add(d.date)}return result}};
+
 /* 골프·오토바이 외출은 오전/오후만 기록합니다.
    예전 시각 기록은 나간 시간을 기준으로 오전/오후로 변환해 계속 읽습니다. */
 window.Outing=(()=>{
