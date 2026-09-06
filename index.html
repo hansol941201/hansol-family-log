@@ -6,13 +6,14 @@
   <meta name="theme-color" content="#f7f7fb">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="한솔기록">
   <title>한솔기록</title>
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
   <link rel="stylesheet" href="style.css?v=23">
   <link rel="stylesheet" href="skin.css?v=23">
   <link rel="stylesheet" href="theme.css?v=23">
-  <link rel="stylesheet" href="calm.css?v=24">
+  <link rel="stylesheet" href="calm.css?v=25">
   <style>.group-label{font-size:12px;font-weight:750;color:#617181;padding:4px 0 7px}.group-label.occasional{margin-top:14px;padding-top:13px;border-top:1px solid #dce3e9}</style>
 </head>
 <body>
@@ -86,10 +87,11 @@
 
       <section id="exportView" class="view" aria-labelledby="exportTitle">
         <div class="page-heading"><h1 id="exportTitle">📦 내보내기</h1><p>원하는 기간의 기록을 한 번에 정리합니다.</p></div>
+        <div class="install-card"><div><b>📱 휴대폰 앱으로 사용</b><span>홈 화면에 설치하면 주소창 없이 앱처럼 바로 열립니다.</span></div><button id="homeInstallBtn" class="secondary-btn">홈 화면에 설치</button><p id="installHelp" class="hint" hidden></p></div>
         <div class="export-box"><div class="range-grid"><label>시작일<input id="exportStart" type="date"></label><label>종료일<input id="exportEnd" type="date"></label></div>
           <button id="pdfBtn" class="primary-btn">PDF로 정리</button><button id="backupBtn" class="secondary-btn">전체 백업 파일 저장</button>
           <label class="secondary-btn file-label">백업 파일 불러오기<input id="restoreInput" type="file" accept="application/json,.json" hidden></label>
-          <p class="hint">앱 안에서 내용을 먼저 확인한 뒤 ‘인쇄·PDF 저장’을 선택할 수 있습니다.</p>
+          <p class="hint">선택한 시작일~종료일 사이의 날짜별 기록, 메모, 혼자 육아와 첨부 자료가 모두 포함됩니다.</p>
         </div>
       </section>
     </main>
@@ -118,7 +120,7 @@
     <div class="modal-card"><div class="sheet-head"><h2>설정</h2><button id="settingsClose" class="icon-btn" aria-label="닫기">×</button></div>
       <label class="toggle-row">화면을 항상 밝게 유지 <input id="wakeLockToggle" type="checkbox"></label>
       <p class="hint">모든 기록은 이 기기의 브라우저 안에 저장됩니다. 기기 변경 전에는 내보내기에서 백업 파일을 저장하세요.</p>
-      <button id="installBtn" class="secondary-btn" hidden>홈 화면에 설치</button>
+      <button id="installBtn" class="secondary-btn">홈 화면에 설치</button>
     </div>
   </section>
   <section id="previewModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="previewTitle" hidden>
@@ -131,6 +133,6 @@
     <div class="modal-card day-modal-card"><div class="sheet-head"><h2 id="calendarDayTitle">날짜 기록</h2><button id="calendarDayClose" class="icon-btn" aria-label="닫기">×</button></div><div id="calendarDayContent"></div><button id="calendarEditBtn" class="primary-btn">✎ 이 날짜 수정하기</button></div>
   </section>
   <div id="toast" role="status" aria-live="polite"></div>
-  <script src="utils.js?v=23"></script><script src="db.js?v=23"></script><script src="audio.js?v=23"></script><script src="backup.js?v=23"></script><script src="pdf.js?v=23"></script><script src="app.js?v=23"></script>
+  <script src="utils.js?v=23"></script><script src="db.js?v=23"></script><script src="audio.js?v=23"></script><script src="backup.js?v=23"></script><script src="pdf.js?v=25"></script><script src="app.js?v=25"></script>
 </body>
 </html>
